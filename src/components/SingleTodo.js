@@ -5,27 +5,40 @@ import { MdDownloadDone } from "react-icons/md";
 const SingleTodo = ({ todo }) => {
   const [edit, setEdit] = useState(false);
   const [editTodo, setEditTodo] = useState(todo.todo);
-  const updateTodo = useRef()
+  const updateTodo = useRef();
   const handleEdit = (e, id) => {
     e.preventDefault();
     const updatedTodo = updateTodo.current.value;
-    fetch(`http://localhost:5000/todo/${id}`, {
+    fetch(`http://localhost:5000/updateTodo/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify( {updatedTodo} ),
+      body: JSON.stringify({ updatedTodo }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        setEdit(false)
+        setEdit(false);
+      });
+  };
+  const handleDone = (id) => {
+    fetch(`http://localhost:5000/completeTodo/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ complete: true }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
       });
   };
   return (
     <form
       onSubmit={(e) => handleEdit(e, todo._id)}
-      className="flex justify-between items-center bg-gradient-to-r from-cyan-500 to-indigo-500 rounded-full p-3"
+      className="flex justify-between items-center bg-gradient-to-r from-cyan-700 to-indigo-600 rounded-full p-3"
     >
       {edit ? (
         <input
@@ -42,7 +55,7 @@ const SingleTodo = ({ todo }) => {
         <span onClick={() => setEdit(!edit)} className="text-white">
           <AiFillEdit />
         </span>
-        <span className="text-white">
+        <span onClick={() => handleDone(todo._id)} className="text-white">
           <MdDownloadDone />
         </span>
       </div>

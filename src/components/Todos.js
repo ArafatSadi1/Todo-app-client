@@ -7,13 +7,13 @@ const Todos = () => {
     fetch("http://localhost:5000/todos")
       .then((response) => response.json())
       .then((data) => {
-        setAllTodos(data);
+        setAllTodos(data.filter(todo => todo.complete !== true));
       });
   }, [allTodo]);
   return (
     <div className="grid grid-cols-3 gap-4 w-4/5 mx-auto my-8">
       {allTodo.map((todo) => (
-        <SingleTodo key={todo._is} todo={todo}></SingleTodo>
+        <SingleTodo key={todo._id} todo={todo}></SingleTodo>
       ))}
     </div>
   );

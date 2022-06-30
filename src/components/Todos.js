@@ -9,7 +9,7 @@ const Todos = () => {
       .then((data) => {
         setAllTodos(data);
       });
-  }, []);
+  }, [allTodo]);
   return (
     <div className="grid grid-cols-3 gap-4 w-4/5 mx-auto my-8">
       {allTodo.map((todo) => (

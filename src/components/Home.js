@@ -6,18 +6,20 @@ const Home = () => {
   const handleAddTodo = (e) => {
     e.preventDefault();
     const todo = todoValue.current.value;
-    fetch("http://localhost:5000/todo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ todo }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Success:", data);
-        e.target.reset();
-      });
+    if (todo) {
+      fetch("http://localhost:5000/todo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ todo }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+          e.target.reset();
+        });
+    }
   };
   return (
     <div>

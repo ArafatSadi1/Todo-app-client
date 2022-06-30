@@ -5,7 +5,10 @@ const Navbar = () => {
   const items = (
     <>
       <li>
-        <Link to="/">Todo</Link>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/todos">Todos</Link>
       </li>
       <li>
         <Link to="/complete">Completed Tasks</Link>

@@ -5,6 +5,7 @@ import Calender from './components/Calender';
 import CompletedTasks from './components/CompletedTasks';
 import Home from './components/Home';
 import Todos from './components/Todos';
+import 'react-day-picker/dist/style.css';
 
 function App() {
   return (

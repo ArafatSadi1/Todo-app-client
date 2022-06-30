@@ -1,25 +1,54 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const items = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink
+          style={({ isActive }) =>
+            isActive
+              ? {
+                borderRadius: "50px"
+                }
+              : { borderRadius: "50px" }
+          }
+          to="/"
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/todos">Todos</Link>
+        <NavLink style={({ isActive }) =>
+            isActive
+              ? {
+                borderRadius: "50px"
+                }
+              : { borderRadius: "50px" }
+          } to="/todos">Todos</NavLink>
       </li>
       <li>
-        <Link to="/complete">Completed Tasks</Link>
+        <NavLink style={({ isActive }) =>
+            isActive
+              ? {
+                borderRadius: "50px"
+                }
+              : { borderRadius: "50px" }
+          } to="/complete">Completed Tasks</NavLink>
       </li>
       <li>
-        <Link to="/calender">Calender</Link>
+        <NavLink style={({ isActive }) =>
+            isActive
+              ? {
+                borderRadius: "50px"
+                }
+              : { borderRadius: "50px" }
+          } to="/calender">Calender</NavLink>
       </li>
     </>
   );
   return (
-    <div class="navbar bg-lime-400">
+    <div class="navbar bg-lime-100">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -47,13 +76,9 @@ const Navbar = () => {
         </div>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0 text-xl">
-          {items}
-        </ul>
+        <ul class="menu menu-horizontal p-0 text-xl">{items}</ul>
       </div>
-      <div className="navbar-end">
-
-      </div>
+      <div className="navbar-end"></div>
     </div>
   );
 };

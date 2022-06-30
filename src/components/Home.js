@@ -23,7 +23,7 @@ const Home = () => {
   };
   return (
     <div>
-      <h1 className="text-center text-3xl py-4">Todoist</h1>
+      <h1 className="text-center text-3xl py-4 font-serif">Todoist</h1>
       <form onSubmit={handleAddTodo} className="mx-auto relative w-3/5">
         <input
           ref={todoValue}

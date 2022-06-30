@@ -15,7 +15,7 @@ const SingleTask = ({ task }) => {
       });
   };
   return (
-    <div className="flex justify-between items-center bg-gradient-to-r from-cyan-700 to-indigo-600 rounded-full p-3 text-white text-lg">
+    <div className="flex justify-between items-center bg-gradient-to-r from-cyan-700 to-indigo-600 rounded-full p-3 text-white text-lg font-serif">
       <s>{task.todo}</s>
       <span
         onClick={() => handleDelete(task._id)}

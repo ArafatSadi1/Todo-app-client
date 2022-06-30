@@ -5,10 +5,10 @@ const Navbar = () => {
   const items = (
     <>
       <li>
-        <Link to="/todo">Todo</Link>
+        <Link to="/">Todo</Link>
       </li>
       <li>
-        <Link to="/complete">Complete Todo</Link>
+        <Link to="/complete">Completed Tasks</Link>
       </li>
       <li>
         <Link to="/calender">Calender</Link>
@@ -16,7 +16,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div class="navbar">
+    <div class="navbar bg-lime-400">
       <div class="navbar-start">
         <div class="dropdown">
           <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -44,12 +44,12 @@ const Navbar = () => {
         </div>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal p-0">
+        <ul class="menu menu-horizontal p-0 text-xl">
           {items}
         </ul>
       </div>
       <div className="navbar-end">
-        
+
       </div>
     </div>
   );

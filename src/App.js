@@ -11,8 +11,7 @@ function App() {
     <div className="w-full h-screen bg-lime-100">
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="todo" element={<Todo />} />
+        <Route path="/" element={<Todo />} />
         <Route path="/complete" element={<CompletedTasks />} />
         <Route path="/calender" element={<Calender />} />
       </Routes>

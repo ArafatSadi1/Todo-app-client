@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
 
-const SingleTask = ({ task }) => {
+const CompletedTask = ({ task }) => {
   const handleDelete = (id) => {
     fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
@@ -19,7 +19,7 @@ const SingleTask = ({ task }) => {
       <s>{task.todo}</s>
       <span
         onClick={() => handleDelete(task._id)}
-        className="text-2xl text-red-500 hover:text-red-700"
+        className="text-2xl text-red-500 hover:text-red-700 cursor-pointer"
       >
         <AiFillDelete />
       </span>
@@ -27,4 +27,4 @@ const SingleTask = ({ task }) => {
   );
 };
 
-export default SingleTask;
+export default CompletedTask;

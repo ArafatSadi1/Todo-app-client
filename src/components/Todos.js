@@ -11,7 +11,7 @@ const Todos = () => {
       });
   }, [allTodo]);
   return (
-    <div className="grid grid-cols-3 gap-4 w-4/5 mx-auto my-8">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-4/5 mx-auto my-8">
       {allTodo.map((todo) => (
         <SingleTodo key={todo._id} todo={todo}></SingleTodo>
       ))}

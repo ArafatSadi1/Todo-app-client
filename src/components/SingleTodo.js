@@ -49,14 +49,14 @@ const SingleTodo = ({ todo }) => {
           className="input input-bordered input-primary w-full p-2 text-lg rounded-full"
         />
       ) : (
-        <span className="font-serif text-lg text-white">{todo.todo}</span>
+        <div className="flex items-center gap-2">
+          <input type="checkbox" onClick={() => handleDone(todo._id)} class="checkbox checkbox-secondary bg-white rounded-full" />
+          <span className="font-serif text-lg text-white">{todo.todo}</span>
+        </div>
       )}
-      <div className="flex gap-2 text-2xl">
-        <span onClick={() => setEdit(!edit)} className="text-white">
+      <div className="text-2xl">
+        <span onClick={() => setEdit(!edit)} className="text-white hover:text-gray-300 cursor-pointer">
           <AiFillEdit />
-        </span>
-        <span onClick={() => handleDone(todo._id)} className="text-white">
-          <MdDownloadDone />
         </span>
       </div>
     </form>

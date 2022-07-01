@@ -9,7 +9,7 @@ const Calender = () => {
     footer = <p>You picked {format(selected, "PP")}.</p>;
   }
   return (
-    <div className="card bg-base-100 shadow-xl w-96 mt-4 mx-auto">
+    <div className="card bg-base-100 shadow-xl w-11/12 lg:w-96 mt-4 mx-auto">
       <DayPicker
         className="mx-auto p-3"
         mode="single"

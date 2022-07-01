@@ -1,25 +1,30 @@
 import React, { useEffect, useState } from "react";
 import SingleTodo from "./SingleTodo";
 
-const Todos = ({todo, setTodo}) => {
-
-  const [allTodo, setAllTodos] = useState([]);
+const Todos = ({ todo }) => {
+  const [taskDone, setTaskDone] = useState(false);
+  const [allTodo, setAllTodo] = useState([]);
   useEffect(() => {
-    fetch("https://dry-ocean-18385.herokuapp.com/todos")
+    fetch("http://localhost:5000/todos")
       .then((response) => response.json())
       .then((data) => {
-        setAllTodos(data.filter((todo) => todo.complete !== true));
-        setTodo(false)
+        setAllTodo(data.filter((todo) => todo.complete !== true));
+        setTaskDone(!taskDone);
       });
-  }, [todo]);
-  
+  }, [todo, taskDone]);
+
   return (
     <div className="h-full relative">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-4/5 mx-auto my-8">
-      {allTodo?.map((todo) => (
-        <SingleTodo key={todo._id} todo={todo}></SingleTodo>
-      ))}
-    </div>
+        {allTodo?.map((task) => (
+          <SingleTodo
+            key={task._id}
+            task={task}
+            taskDone={taskDone}
+            setTaskDone={setTaskDone}
+          ></SingleTodo>
+        ))}
+      </div>
     </div>
   );
 };

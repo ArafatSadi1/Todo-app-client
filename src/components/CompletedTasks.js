@@ -6,7 +6,7 @@ const CompletedTasks = () => {
   const [completedTasks, setCompletedTasks] = useState([]);
   const [taskDelete, setTaskDelete] = useState(false);
   const handleDelete = (id) => {
-    fetch(`https://dry-ocean-18385.herokuapp.com/delete/${id}`, {
+    fetch(`http://localhost:5000/delete/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -19,13 +19,13 @@ const CompletedTasks = () => {
       });
   };
   useEffect(() => {
-    fetch("https://dry-ocean-18385.herokuapp.com/todos")
+    fetch("http://localhost:5000/todos")
       .then((response) => response.json())
       .then((data) => {
         setCompletedTasks(data.filter((todo) => todo.complete === true));
+        setTaskDelete(false);
       });
   }, [taskDelete]);
-  console.log(completedTasks);
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-4/5 mx-auto my-8">
       {completedTasks.map((task) => (

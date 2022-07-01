@@ -2,14 +2,14 @@ import React, { useRef, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { toast } from "react-toastify";
 
-const SingleTodo = ({ todo }) => {
+const SingleTodo = ({ task, taskDone, setTaskDone }) => {
   const [edit, setEdit] = useState(false);
-  const [editTodo, setEditTodo] = useState(todo?.todo);
+  const [editTodo, setEditTodo] = useState(task?.task);
   const updateTodo = useRef();
   const handleEdit = (e, id) => {
     e.preventDefault();
     const updatedTodo = updateTodo.current.value;
-    fetch(`https://dry-ocean-18385.herokuapp.com/updateTodo/${id}`, {
+    fetch(`http://localhost:5000/updateTodo/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -19,11 +19,12 @@ const SingleTodo = ({ todo }) => {
       .then((response) => response.json())
       .then((data) => {
         toast("Task edited");
-        setEdit(false);
+        setEdit(!edit);
       });
   };
   const handleDone = (id) => {
-    fetch(`https://dry-ocean-18385.herokuapp.com/completeTodo/${id}`, {
+    setTaskDone(!taskDone);
+    fetch(`http://localhost:5000/completeTodo/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -33,11 +34,12 @@ const SingleTodo = ({ todo }) => {
       .then((response) => response.json())
       .then((data) => {
         toast.success("Task complete");
+        setTaskDone(taskDone)
       });
   };
   return (
     <form
-      onSubmit={(e) => handleEdit(e, todo._id)}
+      onSubmit={(e) => handleEdit(e, task?._id)}
       className="flex justify-between items-center bg-gradient-to-r from-cyan-700 to-indigo-600 rounded-full p-3"
     >
       {edit ? (
@@ -52,10 +54,10 @@ const SingleTodo = ({ todo }) => {
         <div className="flex items-center gap-2">
           <input
             type="checkbox"
-            onClick={() => handleDone(todo._id)}
+            onClick={() => handleDone(task._id)}
             class="checkbox checkbox-secondary bg-white rounded-full"
           />
-          <span className="font-serif text-lg text-white">{todo.getTodo}</span>
+          <span className="font-serif text-lg text-white">{task.task}</span>
         </div>
       )}
       <div className="text-2xl">

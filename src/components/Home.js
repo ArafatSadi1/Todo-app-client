@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Footer from "./Footer";
 import Todos from "./Todos";
@@ -8,15 +8,14 @@ const Home = () => {
   const todoValue = useRef();
   const handleAddTodo = (e) => {
     e.preventDefault();
-    const getTodo = todoValue.current.value;
-    if (getTodo) {
-      console.log(getTodo);
-      fetch("https://dry-ocean-18385.herokuapp.com/todo", {
+    const task = todoValue.current.value;
+    if (task) {
+      fetch("http://localhost:5000/todo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ getTodo }),
+        body: JSON.stringify({ task }),
       })
         .then((response) => response.json())
         .then((data) => {
@@ -38,7 +37,7 @@ const Home = () => {
           ref={todoValue}
           name="todoInput"
           type="text"
-          placeholder="Enter a todo"
+          placeholder="Enter a task"
           className="input input-bordered input-primary w-full p-4 text-lg rounded-full"
         />
         <input

@@ -5,7 +5,7 @@ const Todos = ({ todo }) => {
   const [taskDone, setTaskDone] = useState(false);
   const [allTodo, setAllTodo] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch("https://dry-ocean-18385.herokuapp.com/todos")
       .then((response) => response.json())
       .then((data) => {
         setAllTodo(data.filter((todo) => todo.complete !== true));
@@ -14,8 +14,8 @@ const Todos = ({ todo }) => {
   }, [todo, taskDone]);
 
   return (
-    <div className="h-full relative">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-4/5 mx-auto my-8">
+    <div className="h-screen relative bg-lime-200">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 w-4/5 mx-auto py-8 ">
         {allTodo?.map((task) => (
           <SingleTodo
             key={task._id}

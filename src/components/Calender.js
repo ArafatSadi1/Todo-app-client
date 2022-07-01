@@ -1,22 +1,25 @@
-import React, { useState } from "react";
+import React from "react";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 
-const Calender = () => {
-  const [selected, setSelected] = useState();
+const Calender = ({ selectedDay, setSelectedDay}) => {
+  
   let footer = <p>Please pick a day.</p>;
-  if (selected) {
-    footer = <p>You picked {format(selected, "PP")}.</p>;
+  if (selectedDay) {
+    footer = <p>You picked {format(selectedDay, "PPp")}.</p>;
   }
   return (
-    <div className="card bg-base-100 shadow-xl w-11/12 lg:w-96 mt-4 mx-auto">
+    <div className="w-full h-screen bg-indigo-200 pt-6">
+      <div className="card bg-base-100 shadow-xl w-11/12 lg:w-96 mx-auto">
       <DayPicker
         className="mx-auto p-3"
         mode="single"
-        selected={selected}
-        onSelect={setSelected}
+        required
+        selected={selectedDay}
+        onSelect={setSelectedDay}
         footer={footer}
       />
+    </div>
     </div>
   );
 };

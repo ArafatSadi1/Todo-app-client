@@ -28,7 +28,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="">
       <h1 className="text-center text-3xl py-4 font-serif">Todoist</h1>
       <form
         onSubmit={handleAddTodo}
@@ -47,7 +47,7 @@ const Home = () => {
           className="btn btn-primary absolute right-0 rounded-full"
         />
       </form>
-      <Todos todo={todo}></Todos>
+      <Todos todo={todo} setTodo={setTodo}></Todos>
       <Footer></Footer>
     </div>
   );

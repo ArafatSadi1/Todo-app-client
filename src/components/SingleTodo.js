@@ -9,7 +9,7 @@ const SingleTodo = ({ todo }) => {
   const handleEdit = (e, id) => {
     e.preventDefault();
     const updatedTodo = updateTodo.current.value;
-    fetch(`http://localhost:5000/updateTodo/${id}`, {
+    fetch(`https://dry-ocean-18385.herokuapp.com/updateTodo/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const SingleTodo = ({ todo }) => {
       });
   };
   const handleDone = (id) => {
-    fetch(`http://localhost:5000/completeTodo/${id}`, {
+    fetch(`https://dry-ocean-18385.herokuapp.com/completeTodo/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

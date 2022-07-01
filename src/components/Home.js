@@ -10,8 +10,8 @@ const Home = () => {
     e.preventDefault();
     const getTodo = todoValue.current.value;
     if (getTodo) {
-      console.log(getTodo)
-      fetch("http://localhost:5000/todo", {
+      console.log(getTodo);
+      fetch("https://dry-ocean-18385.herokuapp.com/todo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -26,7 +26,6 @@ const Home = () => {
         });
     }
   };
-  
 
   return (
     <div>

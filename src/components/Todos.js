@@ -5,7 +5,7 @@ const Todos = ({todo}) => {
   const [allTodo, setAllTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch("https://dry-ocean-18385.herokuapp.com/todos")
       .then((response) => response.json())
       .then((data) => {
         setAllTodos(data.filter((todo) => todo.complete !== true));

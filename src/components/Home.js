@@ -1,28 +1,33 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Footer from "./Footer";
 import Todos from "./Todos";
 
 const Home = () => {
+  const [todo, setTodo] = useState(false);
   const todoValue = useRef();
   const handleAddTodo = (e) => {
     e.preventDefault();
-    const todo = todoValue.current.value;
-    if (todo) {
+    const getTodo = todoValue.current.value;
+    if (getTodo) {
+      console.log(getTodo)
       fetch("http://localhost:5000/todo", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ todo }),
+        body: JSON.stringify({ getTodo }),
       })
         .then((response) => response.json())
         .then((data) => {
-          toast('Task added');
+          toast("Task added");
           e.target.reset();
+          setTodo(data.acknowledged);
         });
     }
   };
+  
+
   return (
     <div>
       <h1 className="text-center text-3xl py-4 font-serif">Todoist</h1>
@@ -43,7 +48,7 @@ const Home = () => {
           className="btn btn-primary absolute right-0 rounded-full"
         />
       </form>
-      <Todos></Todos>
+      <Todos todo={todo}></Todos>
       <Footer></Footer>
     </div>
   );

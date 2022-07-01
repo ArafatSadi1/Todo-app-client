@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 
 const SingleTodo = ({ todo }) => {
   const [edit, setEdit] = useState(false);
-  const [editTodo, setEditTodo] = useState(todo.todo);
+  const [editTodo, setEditTodo] = useState(todo?.todo);
   const updateTodo = useRef();
   const handleEdit = (e, id) => {
     e.preventDefault();
@@ -55,7 +55,7 @@ const SingleTodo = ({ todo }) => {
             onClick={() => handleDone(todo._id)}
             class="checkbox checkbox-secondary bg-white rounded-full"
           />
-          <span className="font-serif text-lg text-white">{todo.todo}</span>
+          <span className="font-serif text-lg text-white">{todo.getTodo}</span>
         </div>
       )}
       <div className="text-2xl">

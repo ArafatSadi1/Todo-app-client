@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { toast } from "react-toastify";
+import Footer from "./Footer";
 import Todos from "./Todos";
 
 const Home = () => {
@@ -43,6 +44,7 @@ const Home = () => {
         />
       </form>
       <Todos></Todos>
+      <Footer></Footer>
     </div>
   );
 };

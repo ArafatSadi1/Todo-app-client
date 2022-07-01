@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
-import { MdDownloadDone } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const SingleTodo = ({ todo }) => {
   const [edit, setEdit] = useState(false);
@@ -18,7 +18,7 @@ const SingleTodo = ({ todo }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        toast("Task edited");
         setEdit(false);
       });
   };
@@ -32,7 +32,7 @@ const SingleTodo = ({ todo }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        toast.success("Task complete");
       });
   };
   return (
@@ -50,12 +50,19 @@ const SingleTodo = ({ todo }) => {
         />
       ) : (
         <div className="flex items-center gap-2">
-          <input type="checkbox" onClick={() => handleDone(todo._id)} class="checkbox checkbox-secondary bg-white rounded-full" />
+          <input
+            type="checkbox"
+            onClick={() => handleDone(todo._id)}
+            class="checkbox checkbox-secondary bg-white rounded-full"
+          />
           <span className="font-serif text-lg text-white">{todo.todo}</span>
         </div>
       )}
       <div className="text-2xl">
-        <span onClick={() => setEdit(!edit)} className="text-white hover:text-gray-300 cursor-pointer">
+        <span
+          onClick={() => setEdit(!edit)}
+          className="text-white hover:text-gray-300 cursor-pointer"
+        >
           <AiFillEdit />
         </span>
       </div>

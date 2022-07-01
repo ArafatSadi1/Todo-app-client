@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { toast } from "react-toastify";
 import Todos from "./Todos";
 
 const Home = () => {
@@ -16,7 +17,7 @@ const Home = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
+          toast('Task added');
           e.target.reset();
         });
     }
@@ -24,7 +25,10 @@ const Home = () => {
   return (
     <div>
       <h1 className="text-center text-3xl py-4 font-serif">Todoist</h1>
-      <form onSubmit={handleAddTodo} className="mx-auto relative w-11/12 lg:w-3/5">
+      <form
+        onSubmit={handleAddTodo}
+        className="mx-auto relative w-11/12 lg:w-3/5"
+      >
         <input
           ref={todoValue}
           name="todoInput"

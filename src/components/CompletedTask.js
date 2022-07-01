@@ -1,5 +1,6 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const CompletedTask = ({ task }) => {
   const handleDelete = (id) => {
@@ -11,7 +12,7 @@ const CompletedTask = ({ task }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        toast.error('Completed task deleted')
       });
   };
   return (
